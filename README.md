@@ -1,10 +1,17 @@
-# My Personal Project
+# MyPersonalProject: ExploreMeals
 
-## A subtitle
+## About
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+This application serves as a handy and efficient way to explore different cuisines and prepare meals. 
+This app allows people to view meals of different cuisines with its associated recipe and ingredients.
+People can select the meals they would like to make from their desired cuisine and have all the required ingredients delivered to them in one package. 
+Not only does this app help *save time and money*, it also allows people to be *hands-on* with their own meal preparations. It is especially useful to those with busy schedules who hope to stop ordering out and make their own meals but do not have time to research recipes, ingredients, and browse grocery stores. 
 
-An example of text with **bold** and *italic* fonts.  
+As a full-time student, I believe this application is a great opportunity to develop the skills and good habits of not only making my own meals but also exploring different cuisines under the busy schedule of school.
+
+## User Stories
+- As a user, I want to be able to view and select cuisines
+- As a user, I want to be able to view meals and its ingredients
+- As a user, I want to be able to add/delete meals from my wishlist
+- As a user, I want to be able to be able to add/delete ingredients from the selected meals
+
