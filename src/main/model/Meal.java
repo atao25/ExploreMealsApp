@@ -53,9 +53,11 @@ public class Meal {
         this.price = price;
     }
 
-//    public String mealToString() {
-//
-//    }
+    public String mealToText() {
+        String text = "";
+        text = name + "/" + cuisine + "/" + "$" + price;
+        return text;
+    }
 
 }
 

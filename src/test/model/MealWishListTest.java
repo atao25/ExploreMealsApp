@@ -53,4 +53,14 @@ public class MealWishListTest {
         assertEquals(2, mealList.getListOfMeals().size());
         assertEquals(meal3, mealList.getListOfMeals().get(1));
     }
+
+    @Test
+    void testGetByIndex() {
+
+    }
+
+    @Test
+    void testRemoveByIndex() {
+
+    }
 }
