@@ -34,9 +34,9 @@ public class Meal {
         return price;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
+//    public List<String> getIngredients() {
+//        return ingredients;
+//    }
 
 //    // EFFECTS: sets the name of the meal
 //    public void setName(String name) {

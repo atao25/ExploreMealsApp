@@ -11,6 +11,7 @@ public class MealWishListTest {
     Meal meal1 = new Meal("Pizza", "Italian", 20);
     Meal meal2 = new Meal("Sushi", "Japanese", 22);
     Meal meal3 = new Meal("Mac and Cheese", "American", 18);
+    //Meal dummyMeal = new Meal("", "", 0);
 
     @BeforeEach
     void setUp() {
@@ -63,6 +64,7 @@ public class MealWishListTest {
         assertEquals(meal1, mealList.getListOfMeals().get(0));
         assertEquals(meal2, mealList.getListOfMeals().get(1));
         assertEquals(meal3, mealList.getListOfMeals().get(2));
+
     }
 
 
@@ -78,23 +80,12 @@ public class MealWishListTest {
         assertEquals(2, mealList.getListOfMeals().size());
         assertFalse(mealList.getListOfMeals().contains(meal1));
 
-        assertTrue(mealList.removeMealByIndex(0));
+        assertTrue(mealList.removeMealByIndex(1));
         assertEquals(1, mealList.getListOfMeals().size());
-        assertFalse(mealList.getListOfMeals().contains(meal2)); //check with index moving
+        assertFalse(mealList.getListOfMeals().contains(meal3));
     }
 
 
-  //  public String toString() {
-//        String output = "";
-//        for (int i = 0; i < listOfMeals.size(); i++) {
-//            int mealNumber = i;
-//            Meal meal = listOfMeals.get(i);
-//            String mealInfo = meal.mealToText();
-//            output = output + mealNumber + ". " + mealInfo + "\n";
-//        }
-//        return output;
-//
-//    }
 
     @Test
     void testMealListToString() {

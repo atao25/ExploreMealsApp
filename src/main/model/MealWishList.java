@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // This class represents the list of meals in the program, and can be used in presenting the wishlist
 public class MealWishList {
@@ -49,8 +48,10 @@ public class MealWishList {
         Meal temp = new Meal("", "", 0);
         if (index >= 0 && index < listOfMeals.size()) {
             temp = listOfMeals.get(index);
+            return temp;
+        } else {
+            return temp;
         }
-        return temp;
     }
 
     // REQUIRES: index >= 0
