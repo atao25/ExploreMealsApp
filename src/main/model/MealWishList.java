@@ -53,6 +53,7 @@ public class MealWishList {
         return temp;
     }
 
+    // REQUIRES: index >= 0
     // MODIFIES: this
     // EFFECT: removes a meal from meal list by index
     //         returns true if meal is removed and false if index doesn't exist in meal list
@@ -65,6 +66,7 @@ public class MealWishList {
         }
     }
 
+    // EFFECTS: returns the list of meals in form of String
     public String toString() {
         String output = "";
         for (int i = 0; i < listOfMeals.size(); i++) {

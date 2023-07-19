@@ -53,6 +53,7 @@ public class Meal {
         this.price = price;
     }
 
+    // EFFECTS: returns the meal information in form of String
     public String mealToText() {
         String text = "";
         text = name + "/" + cuisine + "/" + "$" + price;

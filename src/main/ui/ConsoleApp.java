@@ -67,7 +67,7 @@ public class ConsoleApp {
         int index = input.nextInt();
         Meal mealSelected = masterList.getMealByIndex(index);
         wishList.add(mealSelected);
-        System.out.println("Meal added!");
+        System.out.println("Meal added!\n");
 
 
     }
@@ -80,7 +80,7 @@ public class ConsoleApp {
         System.out.println("To remove meal from personal wishlist, input 0, 1, 3...\n");
         int index = input.nextInt();
         boolean mealRemoved = wishList.removeMealByIndex(index);
-        System.out.println("Meal removed!");
+        System.out.println("Meal removed!\n");
 
     }
 

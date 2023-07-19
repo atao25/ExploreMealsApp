@@ -54,13 +54,51 @@ public class MealWishListTest {
         assertEquals(meal3, mealList.getListOfMeals().get(1));
     }
 
+
     @Test
     void testGetByIndex() {
-
+        mealList.add(meal1);
+        mealList.add(meal2);
+        mealList.add(meal3);
+        assertEquals(meal1, mealList.getListOfMeals().get(0));
+        assertEquals(meal2, mealList.getListOfMeals().get(1));
+        assertEquals(meal3, mealList.getListOfMeals().get(2));
     }
+
 
     @Test
     void testRemoveByIndex() {
+        mealList.add(meal1);
+        mealList.add(meal2);
+        mealList.add(meal3);
+
+        assertFalse(mealList.removeMealByIndex(4));
+
+        assertTrue(mealList.removeMealByIndex(0));
+        assertEquals(2, mealList.getListOfMeals().size());
+        assertFalse(mealList.getListOfMeals().contains(meal1));
+
+        assertTrue(mealList.removeMealByIndex(0));
+        assertEquals(1, mealList.getListOfMeals().size());
+        assertFalse(mealList.getListOfMeals().contains(meal2)); //check with index moving
+    }
+
+
+  //  public String toString() {
+//        String output = "";
+//        for (int i = 0; i < listOfMeals.size(); i++) {
+//            int mealNumber = i;
+//            Meal meal = listOfMeals.get(i);
+//            String mealInfo = meal.mealToText();
+//            output = output + mealNumber + ". " + mealInfo + "\n";
+//        }
+//        return output;
+//
+//    }
+
+    @Test
+    void testMealListToString() {
+
 
     }
 }
