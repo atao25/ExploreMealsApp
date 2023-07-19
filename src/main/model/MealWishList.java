@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public class MealWishList {
 
     private ArrayList<Meal> listOfMeals;
-   // private int index;
 
     // constructs a list of meals that is empty
     public MealWishList() {
+
         listOfMeals = new ArrayList<>();
     }
 
@@ -71,10 +71,9 @@ public class MealWishList {
     public String toString() {
         String output = "";
         for (int i = 0; i < listOfMeals.size(); i++) {
-            int mealNumber = i;
             Meal meal = listOfMeals.get(i);
             String mealInfo = meal.mealToText();
-            output = output + mealNumber + ". " + mealInfo + "\n";
+            output = output + i + ". " + mealInfo + "\n";
         }
         return output;
 

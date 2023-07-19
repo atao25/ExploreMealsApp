@@ -67,6 +67,18 @@ public class MealWishListTest {
 
     }
 
+    // REQUIRES: index >= 0
+//    // MODIFIES: this
+//    // EFFECT: removes a meal from meal list by index
+//    //         returns true if meal is removed and false if index doesn't exist in meal list
+//    public boolean removeMealByIndex(int index) {
+//        if (index >= 0 && index < listOfMeals.size()) {
+//            listOfMeals.remove(index);
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     @Test
     void testRemoveByIndex() {
@@ -79,10 +91,15 @@ public class MealWishListTest {
         assertTrue(mealList.removeMealByIndex(0));
         assertEquals(2, mealList.getListOfMeals().size());
         assertFalse(mealList.getListOfMeals().contains(meal1));
+        assertTrue(mealList.getListOfMeals().contains(meal2));
+        assertTrue(mealList.getListOfMeals().contains(meal3));
+        assertFalse(mealList.removeMealByIndex(2));
 
-        assertTrue(mealList.removeMealByIndex(1));
+        assertTrue(mealList.removeMealByIndex(0));
         assertEquals(1, mealList.getListOfMeals().size());
-        assertFalse(mealList.getListOfMeals().contains(meal3));
+        assertFalse(mealList.getListOfMeals().contains(meal2));
+        assertTrue(mealList.getListOfMeals().contains(meal3));
+        assertFalse(mealList.removeMealByIndex(1));
     }
 
 
