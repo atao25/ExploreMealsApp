@@ -98,6 +98,14 @@ public class MealWishListTest {
 
     @Test
     void testMealListToString() {
+        mealList.add(meal1);
+        assertEquals("0. Pizza/Italian/$20\n", mealList.toString());
+
+        mealList.add(meal2);
+        assertEquals("0. Pizza/Italian/$20\n1. Sushi/Japanese/$22\n", mealList.toString());
+
+        mealList.add(meal3);
+        assertEquals("0. Pizza/Italian/$20\n1. Sushi/Japanese/$22\n2. Mac and Cheese/American/$18\n", mealList.toString());
 
 
     }

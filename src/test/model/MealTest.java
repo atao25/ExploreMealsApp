@@ -17,6 +17,9 @@ public class MealTest {
     void setUp() {
         testMeal = new Meal("Pizza", "Italian", 20);
         testIngredients = new ArrayList<>();
+        Meal meal1 = new Meal("Pizza", "Italian", 20);
+        Meal meal2 = new Meal("Sushi", "Japanese", 22);
+        Meal meal3 = new Meal("Mac and Cheese", "American", 18);
     }
 
     @Test
@@ -58,6 +61,7 @@ public class MealTest {
     @Test
     void testMealToString() {
         assertEquals("Pizza/Italian/$20", testMeal.mealToText());
+
 
     }
 }
