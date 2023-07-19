@@ -38,20 +38,20 @@ public class Meal {
         return ingredients;
     }
 
-    // EFFECTS: sets the name of the meal
-    public void setName(String name) {
-        this.name = name;
-    }
+//    // EFFECTS: sets the name of the meal
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    // EFFECTS: sets the cuisine of the meal
+//    public void setCuisine() {
+//        this.cuisine = cuisine;
+//    }
 
-    // EFFECTS: sets the cuisine of the meal
-    public void setCuisine() {
-        this.cuisine = cuisine;
-    }
-
-    // EFFECTS: sets the price of the meal
-    public void setPrice(int price) {
-        this.price = price;
-    }
+//    // EFFECTS: sets the price of the meal
+//    public void setPrice(int price) {
+//        this.price = price;
+//    }
 
     // EFFECTS: returns the meal information in form of String
     public String mealToText() {

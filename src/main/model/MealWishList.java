@@ -30,11 +30,11 @@ public class MealWishList {
 
     }
 
-    // EFFECTS: returns the number of meals in the list
-    public int getNumOfMeals() {
-
-        return listOfMeals.size();
-    }
+//    // EFFECTS: returns the number of meals in the list
+//    public int getNumOfMeals() {
+//
+//        return listOfMeals.size();
+//    }
 
     // EFFECTS: returns the list of meals
     public ArrayList<Meal> getListOfMeals() {

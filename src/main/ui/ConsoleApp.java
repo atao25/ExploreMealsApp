@@ -35,14 +35,18 @@ public class ConsoleApp {
         Scanner input = new Scanner((System.in));
         System.out.println("Explore Meals!");
 
-        init();  //init
+        init();
 
         while (keepGoing) {
             displayMenu();
             command = input.next();
+           // processUserInput(command);
+            if (command.equals("exit")) {
+                keepGoing = false;
+            }
             processUserInput(command);
         }
-        System.out.println("Thank you for buying from us!");
+        System.out.println("Thank you for your time!");
     }
 
     private void processUserInput(String command) {
@@ -51,7 +55,8 @@ public class ConsoleApp {
 
         } else if (command.equals("2")) {
             doViewWishlist();
-
+        } else if (command.equals("exit")) {
+            System.out.println("Goodbye!");
         } else {
             System.out.println("Invalid Selection");
         }
@@ -88,6 +93,7 @@ public class ConsoleApp {
         System.out.println("1. View Meals");
         System.out.println(("2. View Personal Wishlist"));
         System.out.println(("Select 1 or 2"));
+        System.out.println("Input exit to end session");
     }
 
     private void init() {
