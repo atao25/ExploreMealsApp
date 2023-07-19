@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MealTest {
     Meal testMeal;
+    List<String> testIngredients;
 
     @BeforeEach
     void setUp() {
         testMeal = new Meal("Pizza", "Italian", 20);
+        testIngredients = new ArrayList<>();
     }
 
     @Test
@@ -24,17 +27,28 @@ public class MealTest {
     }
 
     @Test
-    void getName() {
+    void testGetName() {
         assertEquals("Pizza", testMeal.getName());
     }
 
     @Test
-    void getCuisine() {
+    void testGetCuisine() {
         assertEquals("Italian", testMeal.getCuisine());
     }
 
     @Test
-    void getPrice() {
+    void testGetPrice() {
         assertEquals(20, testMeal.getPrice());
+    }
+
+    @Test
+    void testGetIngredients() {
+        testIngredients.add("salt");
+        testIngredients.add("flour");
+        testIngredients.add("vinegar");
+        assertEquals(3, testIngredients.size());
+        assertEquals("salt", testIngredients.get(0));
+        assertTrue(testIngredients.contains("flour"));
+
     }
 }

@@ -8,7 +8,7 @@ public class Meal {
     private String name;
     private String cuisine;
     private int price;
-   // private List<String> ingredients;
+    private List<String> ingredients;
 
 
     // EFFECTS: creates a meal with name, cuisine, empty list of ingredients
@@ -16,7 +16,7 @@ public class Meal {
         this.name = name;
         this.cuisine = cuisine;
         this.price = price;
-      //  this.ingredients = new ArrayList<>();
+        this.ingredients = new ArrayList<>();
     }
 
     // EFFECTS: gets the name of the meal
@@ -32,6 +32,10 @@ public class Meal {
     // EFFECTS: gets the price of the meal
     public int getPrice() {
         return price;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
     }
 
     // EFFECTS: sets the name of the meal
