@@ -79,6 +79,7 @@ public class ConsoleApp {
         System.out.println(masterListString);
 
         System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...\n");
+        System.out.println("To exit View Meals, input b\n");
 
 
         if (input.hasNextInt()) {
@@ -89,7 +90,7 @@ public class ConsoleApp {
         } else {
             String text = input.next();
             if (text.equals("b")) {
-                System.out.println("Heading back to main menu:\n");
+                System.out.println("Heading back to main menu:");
             } else {
                 System.out.println("Invalid selection: heading back to main menu:\n");
             }

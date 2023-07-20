@@ -11,6 +11,7 @@ public class MealWishListTest {
     Meal meal1 = new Meal("Pizza", "Italian", 20);
     Meal meal2 = new Meal("Sushi", "Japanese", 22);
     Meal meal3 = new Meal("Mac and Cheese", "American", 18);
+    Meal meal4 = new Meal("Pasta", "Italian", 32);
 
     @BeforeEach
     void setUp() {
@@ -61,11 +62,17 @@ public class MealWishListTest {
         mealList.add(meal2);
         mealList.add(meal3);
 
+        assertEquals(3, mealList.getListOfMeals().size());
+        assertEquals(meal1, mealList.getListOfMeals().get(0));
+        assertFalse(mealList.getListOfMeals().contains(meal4));
+        assertTrue(mealList.getListOfMeals().contains(meal2));
+
         assertFalse(mealList.removeMealByIndex(4));
 
         assertTrue(mealList.removeMealByIndex(0));
         assertEquals(2, mealList.getListOfMeals().size());
         assertEquals(meal2, mealList.getListOfMeals().get(0));
+        assertEquals(meal3, mealList.getListOfMeals().get(1));
         assertFalse(mealList.getListOfMeals().contains(meal1));
         assertTrue(mealList.getListOfMeals().contains(meal2));
         assertTrue(mealList.getListOfMeals().contains(meal3));
