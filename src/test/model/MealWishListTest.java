@@ -35,6 +35,7 @@ public class MealWishListTest {
         assertEquals(3, mealList.getListOfMeals().size());
         assertEquals(meal2, mealList.getListOfMeals().get(1));
         assertTrue(mealList.getListOfMeals().contains(meal2));
+
     }
 
     @Test
