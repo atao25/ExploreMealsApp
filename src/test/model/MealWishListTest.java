@@ -73,9 +73,13 @@ public class MealWishListTest {
         mealList.add(meal1);
         mealList.add(meal2);
         mealList.add(meal3);
-        assertEquals(meal1, mealList.getListOfMeals().get(0));
-        assertEquals(meal2, mealList.getListOfMeals().get(1));
-        assertEquals(meal3, mealList.getListOfMeals().get(2));
+//        assertEquals(meal1, mealList.getListOfMeals().get(0));
+//        assertEquals(meal2, mealList.getListOfMeals().get(1));
+//        assertEquals(meal3, mealList.getListOfMeals().get(2));
+
+        assertEquals(meal1, mealList.getMealByIndex(0));
+        assertEquals(meal2, mealList.getMealByIndex(1));
+        assertEquals(meal3, mealList.getMealByIndex(2));
 
         mealList.remove(meal1);
         mealList.remove(meal2);
@@ -110,8 +114,8 @@ public class MealWishListTest {
         assertEquals(2, mealList.getListOfMeals().size());
         assertEquals(meal2, mealList.getListOfMeals().get(0));
         assertFalse(mealList.getListOfMeals().contains(meal1));
-       // assertTrue(mealList.getListOfMeals().contains(meal2));
-       //  assertTrue(mealList.getListOfMeals().contains(meal3));
+        assertTrue(mealList.getListOfMeals().contains(meal2));
+        assertTrue(mealList.getListOfMeals().contains(meal3));
 
         assertFalse(mealList.removeMealByIndex(2));
 
@@ -119,7 +123,7 @@ public class MealWishListTest {
         assertEquals(1, mealList.getListOfMeals().size());
         assertEquals(meal3, mealList.getListOfMeals().get(0));
         assertFalse(mealList.getListOfMeals().contains(meal2));
-       // assertTrue(mealList.getListOfMeals().contains(meal3));
+        assertTrue(mealList.getListOfMeals().contains(meal3));
 
         assertFalse(mealList.removeMealByIndex(1));
     }
