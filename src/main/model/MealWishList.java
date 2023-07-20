@@ -49,6 +49,8 @@ public class MealWishList {
         if (index >= 0 && index < listOfMeals.size()) {
             temp = listOfMeals.get(index);
             return temp;
+        } else if (listOfMeals.size() == 0) {
+            return null;
         } else {
             return temp;
         }

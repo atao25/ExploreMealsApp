@@ -11,7 +11,7 @@ public class MealWishListTest {
     Meal meal1 = new Meal("Pizza", "Italian", 20);
     Meal meal2 = new Meal("Sushi", "Japanese", 22);
     Meal meal3 = new Meal("Mac and Cheese", "American", 18);
-    //Meal dummyMeal = new Meal("", "", 0);
+    Meal dummyMeal = new Meal("", "", 0);
 
     @BeforeEach
     void setUp() {
@@ -55,6 +55,18 @@ public class MealWishListTest {
         assertEquals(meal3, mealList.getListOfMeals().get(1));
     }
 
+    // REQUIRES: index >= 0
+//    // MODIFIES: this
+//    // EFFECT: gets a meal by its index
+//    public Meal getMealByIndex(int index) {
+//        Meal temp = new Meal("", "", 0);
+//        if (index >= 0 && index < listOfMeals.size()) {
+//            temp = listOfMeals.get(index);
+//            return temp;
+//        } else {
+//            return temp;
+//        }
+//    }
 
     @Test
     void testGetByIndex() {
@@ -64,6 +76,12 @@ public class MealWishListTest {
         assertEquals(meal1, mealList.getListOfMeals().get(0));
         assertEquals(meal2, mealList.getListOfMeals().get(1));
         assertEquals(meal3, mealList.getListOfMeals().get(2));
+
+        mealList.remove(meal1);
+        mealList.remove(meal2);
+        mealList.remove(meal3);
+        assertEquals(null, mealList.getMealByIndex(0));
+
 
     }
 
@@ -90,15 +108,19 @@ public class MealWishListTest {
 
         assertTrue(mealList.removeMealByIndex(0));
         assertEquals(2, mealList.getListOfMeals().size());
+        assertEquals(meal2, mealList.getListOfMeals().get(0));
         assertFalse(mealList.getListOfMeals().contains(meal1));
-        assertTrue(mealList.getListOfMeals().contains(meal2));
-        assertTrue(mealList.getListOfMeals().contains(meal3));
+       // assertTrue(mealList.getListOfMeals().contains(meal2));
+       //  assertTrue(mealList.getListOfMeals().contains(meal3));
+
         assertFalse(mealList.removeMealByIndex(2));
 
         assertTrue(mealList.removeMealByIndex(0));
         assertEquals(1, mealList.getListOfMeals().size());
+        assertEquals(meal3, mealList.getListOfMeals().get(0));
         assertFalse(mealList.getListOfMeals().contains(meal2));
-        assertTrue(mealList.getListOfMeals().contains(meal3));
+       // assertTrue(mealList.getListOfMeals().contains(meal3));
+
         assertFalse(mealList.removeMealByIndex(1));
     }
 

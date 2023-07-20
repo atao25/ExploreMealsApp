@@ -40,7 +40,6 @@ public class ConsoleApp {
         while (keepGoing) {
             displayMenu();
             command = input.next();
-           // processUserInput(command);
             if (command.equals("exit")) {
                 keepGoing = false;
             }
@@ -82,10 +81,12 @@ public class ConsoleApp {
         String wishListString = wishList.toString();
         System.out.println(wishListString);
 
-        System.out.println("To remove meal from personal wishlist, input 0, 1, 3...\n");
+        System.out.println("To remove meal from personal wishlist, input 0, 1, 3...");
+       // System.out.println("To exit WishList, input b to go back\n");
         int index = input.nextInt();
-        boolean mealRemoved = wishList.removeMealByIndex(index);
+        wishList.removeMealByIndex(index);
         System.out.println("Meal removed!\n");
+
 
     }
 
