@@ -81,7 +81,6 @@ public class ConsoleApp {
         System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...\n");
         System.out.println("To exit View Meals, input b\n");
 
-
         if (input.hasNextInt()) {
             int index = input.nextInt();
             Meal mealSelected = masterList.getListOfMeals().get(index);
