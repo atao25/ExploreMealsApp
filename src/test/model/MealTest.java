@@ -59,6 +59,5 @@ public class MealTest {
     void testMealToString() {
         assertEquals("Pizza/Italian/$20", testMeal.mealToText());
 
-
     }
 }

@@ -43,22 +43,7 @@ public class MealWishList {
 
     // REQUIRES: index >= 0
     // MODIFIES: this
-    // EFFECT: gets a meal by its index
-    public Meal getMealByIndex(int index) {
-        Meal temp = new Meal("", "", 0);
-        if (index >= 0 && index < listOfMeals.size()) {
-            temp = listOfMeals.get(index);
-            return temp;
-        } else if (listOfMeals.size() == 0) {
-            return null;
-        } else {
-            return temp;
-        }
-    }
-
-    // REQUIRES: index >= 0
-    // MODIFIES: this
-    // EFFECT: removes a meal from meal list by index
+    // EFFECT: removes a meal from meal list by index,
     //         returns true if meal is removed and false if index doesn't exist in meal list
     public boolean removeMealByIndex(int index) {
         if (index >= 0 && index < listOfMeals.size()) {

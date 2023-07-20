@@ -69,7 +69,7 @@ public class ConsoleApp {
 
         System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...\n");
         int index = input.nextInt();
-        Meal mealSelected = masterList.getMealByIndex(index);
+        Meal mealSelected = masterList.getListOfMeals().get(index);
         wishList.add(mealSelected);
         System.out.println("Meal added!\n");
 
@@ -82,12 +82,20 @@ public class ConsoleApp {
         System.out.println(wishListString);
 
         System.out.println("To remove meal from personal wishlist, input 0, 1, 3...");
-       // System.out.println("To exit WishList, input b to go back\n");
-        int index = input.nextInt();
-        wishList.removeMealByIndex(index);
-        System.out.println("Meal removed!\n");
+        System.out.println("To exit WishList, input b\n");
 
-
+        if (input.hasNextInt()) {
+            int index = input.nextInt();
+            wishList.removeMealByIndex(index);
+            System.out.println("Meal removed!\n");
+        } else {
+            String text = input.next();
+            if (text.equals("b")) {
+                System.out.println("Heading back to main menu");
+            } else {
+                System.out.println("invalid: heading back to main menu");
+            }
+        }
     }
 
     private void displayMenu() {
