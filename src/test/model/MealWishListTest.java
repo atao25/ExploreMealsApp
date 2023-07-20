@@ -68,6 +68,7 @@ public class MealWishListTest {
         assertTrue(mealList.getListOfMeals().contains(meal2));
 
         assertFalse(mealList.removeMealByIndex(4));
+        assertFalse(mealList.removeMealByIndex(3));
 
         assertTrue(mealList.removeMealByIndex(0));
         assertEquals(2, mealList.getListOfMeals().size());
