@@ -11,7 +11,6 @@ public class MealWishListTest {
     Meal meal1 = new Meal("Pizza", "Italian", 20);
     Meal meal2 = new Meal("Sushi", "Japanese", 22);
     Meal meal3 = new Meal("Mac and Cheese", "American", 18);
-    Meal dummyMeal = new Meal("", "", 0);
 
     @BeforeEach
     void setUp() {
@@ -83,7 +82,6 @@ public class MealWishListTest {
     }
 
 
-
     @Test
     void testMealListToString() {
         mealList.add(meal1);
@@ -94,7 +92,6 @@ public class MealWishListTest {
 
         mealList.add(meal3);
         assertEquals("0. Pizza/Italian/$20\n1. Sushi/Japanese/$22\n2. Mac and Cheese/American/$18\n", mealList.toString());
-
 
     }
 }

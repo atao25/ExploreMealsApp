@@ -1,6 +1,6 @@
 package ui;
 
-// This class represents the underlying operations for the user interface
+// This class represents the underlying operations for the user interface,
 // and it keeps the program running
 
 import model.Meal;
@@ -9,6 +9,8 @@ import model.MealWishList;
 import java.util.Scanner;
 
 // Meal application
+// Citation: TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
+
 public class ConsoleApp {
     private Meal pizza;
     private Meal frenchToast;
@@ -17,23 +19,28 @@ public class ConsoleApp {
     private Meal cornDog;
     private Meal sushi;
     private Meal pork;
+    private Meal pasta;
+    private Meal curry;
+    private Meal pho;
+    private Meal salad;
+    private Meal rice;
+    private Meal wings;
     private MealWishList masterList;
     private MealWishList wishList;
     private Scanner input;
 
-
+    // EFFECTS: runs the MealApp
     public ConsoleApp() {
         runMealApp();
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input,
-    //          citations: TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // EFFECTS: processes user input
     private void runMealApp() {
         boolean keepGoing = true;
         String command;
         Scanner input = new Scanner((System.in));
-        System.out.println("Explore Meals!");
+        System.out.println("\nExplore Meals!");
 
         init();
 
@@ -43,12 +50,14 @@ public class ConsoleApp {
             if (command.equals("exit")) {
                 keepGoing = false;
             }
-            processUserInput(command);
+            processUserCommand(command);
         }
         System.out.println("Thank you for your time!");
     }
 
-    private void processUserInput(String command) {
+    // MODIFIES: this
+    // EFFECTS: processes user command
+    private void processUserCommand(String command) {
         if (command.equals("1")) {
             doViewMeals();
 
@@ -57,31 +66,45 @@ public class ConsoleApp {
         } else if (command.equals("exit")) {
             System.out.println("Goodbye!");
         } else {
-            System.out.println("Invalid Selection");
+            System.out.println("Invalid selection");
         }
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: displays list of all available meals in meal app
+    //          allows user to select meal to add to wishlist
     private void doViewMeals() {
         System.out.println("Available Meals:\n");
         String masterListString = masterList.toString();
         System.out.println(masterListString);
 
         System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...\n");
-        int index = input.nextInt();
-        Meal mealSelected = masterList.getListOfMeals().get(index);
-        wishList.add(mealSelected);
-        System.out.println("Meal added!\n");
 
 
+        if (input.hasNextInt()) {
+            int index = input.nextInt();
+            Meal mealSelected = masterList.getListOfMeals().get(index);
+            wishList.add(mealSelected);
+            System.out.println("Meal added!\n");
+        } else {
+            String text = input.next();
+            if (text.equals("b")) {
+                System.out.println("Heading back to main menu:\n");
+            } else {
+                System.out.println("Invalid selection: heading back to main menu:\n");
+            }
+        }
     }
 
+    // MODIFIES: this
+    // EFFECTS: displays all meal items in wishlist
+    //          allows user to remove meals from wishlist
     private void doViewWishlist() {
         System.out.println("My WishList:\n");
         String wishListString = wishList.toString();
         System.out.println(wishListString);
 
-        System.out.println("To remove meal from personal wishlist, input 0, 1, 3...");
+        System.out.println("To remove meal from Personal Wishlist, input 0, 1, 3...");
         System.out.println("To exit WishList, input b\n");
 
         if (input.hasNextInt()) {
@@ -91,20 +114,24 @@ public class ConsoleApp {
         } else {
             String text = input.next();
             if (text.equals("b")) {
-                System.out.println("Heading back to main menu");
+                System.out.println("Heading back to main menu:\n");
             } else {
-                System.out.println("invalid: heading back to main menu");
+                System.out.println("Invalid: heading back to main menu:\n");
             }
         }
+
     }
 
+    // EFFECTS: displays menu of options to select
     private void displayMenu() {
         System.out.println("1. View Meals");
-        System.out.println(("2. View Personal Wishlist"));
+        System.out.println(("2. View Personal Wishlist\n"));
         System.out.println(("Select 1 or 2"));
         System.out.println("Input exit to end session");
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes meals
     private void init() {
         pizza = new Meal("Pizza", "Italian", 25);
         frenchToast = new Meal("French Toast", "French", 22);
@@ -113,7 +140,22 @@ public class ConsoleApp {
         cornDog = new Meal("Corn Dog", "American", 18);
         sushi = new Meal("California Roll Sushi", "Japan", 26);
         pork = new Meal("Sweet and Sour Pork", "Chinese", 30);
+        pasta = new Meal("Tomato Pasta", "Italian", 28);
+        curry = new Meal("Chicken Curry", "Indian", 29);
+        pho = new Meal("Pho", "Vietnamese", 30);
+        salad = new Meal("Caesar Salad", "Italian", 25);
+        rice = new Meal("Bibimbap", "Korean", 32);
+        wings = new Meal("Chicken Wings", "American", 26);
 
+        initializeList();
+
+        input = new Scanner(System.in);
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes available list of meals
+    private void initializeList() {
         masterList = new MealWishList();
         wishList = new MealWishList();
 
@@ -124,9 +166,12 @@ public class ConsoleApp {
         masterList.add(cornDog);
         masterList.add(sushi);
         masterList.add(pork);
-
-        input = new Scanner(System.in);
-
+        masterList.add(pasta);
+        masterList.add(curry);
+        masterList.add(pho);
+        masterList.add(salad);
+        masterList.add(rice);
+        masterList.add(wings);
     }
 }
 
