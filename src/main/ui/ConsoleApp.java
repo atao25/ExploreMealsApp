@@ -78,7 +78,10 @@ public class ConsoleApp {
         String masterListString = masterList.toString();
         System.out.println(masterListString);
 
-        System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...\n");
+      //  System.out.println("To view Ingredients, please follow the following instructions:\n");
+      //  System.out.println("Input 'i' to view ingredients, followed by the number of the selected meal "
+     //           + "(for example: 'I0' to view ingredients of pizza");
+        System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...");
         System.out.println("To exit View Meals, input b\n");
 
         if (input.hasNextInt()) {
@@ -104,7 +107,12 @@ public class ConsoleApp {
         String wishListString = wishList.toString();
         System.out.println(wishListString);
 
-        System.out.println("To remove meal from Personal Wishlist, input 0, 1, 3...");
+//        System.out.println("To view Ingredients or remove meal from Personal Wishlist, please enter two characters:\n");
+//        System.out.println("For the first character, input 'i' to go to view ingredients, followed by meal number: 0, 1, 2...\n");
+//        System.out.println("For example 'I0' to view ingredients of pizza\n");
+//        System.out.println("To remove meal from Personal Wishlist, input 'r' then 0, 1, 2, 3...\n");
+//        System.out.println("For example, 'R0' to remove pizza");
+     //   System.out.println("To remove meal from Personal Wishlist, input 0, 1, 3...");
         System.out.println("To exit WishList, input b\n");
 
         if (input.hasNextInt()) {
@@ -119,6 +127,25 @@ public class ConsoleApp {
                 System.out.println("Invalid: heading back to main menu:\n");
             }
         }
+
+//        String commandText = input.next();
+//        commandText = commandText.toLowerCase();
+//        if (commandText.length() > 2) {
+//            System.out.println("Error: invalid command. Heading back to main menu.\n");
+//        } else {
+//            if (commandText.equals("b")) {
+//                System.out.println("Heading back to main menu");
+//            } else {
+//                char firstChar = commandText.charAt(0);
+//                char secondChar = commandText.charAt(1);
+//                if (commandText.length() == 1) {
+//                    System.out.println("Error: invalid command. Heading back to main menu");
+//                } else if (firstChar == 'r') {
+//                    int index = secondChar - '0';
+//                    boolean mealRemoved = wishList.getListOfMeals().get(index);
+//                }
+//            }
+//        }
 
     }
 

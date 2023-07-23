@@ -16,6 +16,8 @@ As a full-time student, I believe this application is a great opportunity to dev
 - As a user, I want to be able to delete meals from my wishlist
 - As a user, I want to be able to close the application 
 - As a user, I want to be able to select meals and view their ingredients
+- As a user, I want to be able to save my wishlist to file
+- As a user, I want to be able to load my wishlist from file
 
 
 

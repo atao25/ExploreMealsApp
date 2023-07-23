@@ -1,9 +1,10 @@
 package model;
 
-// This class represents a meal with a name, cuisine, price, and ingredients
+
 import java.util.ArrayList;
 import java.util.List;
 
+// This class represents a meal with a name, cuisine, price, and ingredients
 public class Meal {
     private String name;
     private String cuisine;
