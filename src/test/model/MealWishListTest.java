@@ -15,7 +15,7 @@ public class MealWishListTest {
 
     @BeforeEach
     void setUp() {
-        mealList = new MealWishList();
+        mealList = new MealWishList("testList");
     }
 
     @Test

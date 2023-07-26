@@ -5,7 +5,11 @@ package ui;
 
 import model.Meal;
 import model.MealWishList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Meal application
@@ -27,10 +31,19 @@ public class ConsoleApp {
     private Meal wings;
     private MealWishList masterList;
     private MealWishList wishList;
-    private Scanner input;
 
-    // EFFECTS: runs the MealApp
-    public ConsoleApp() {
+    private static final String JSON_STORE = "./data/mealWishList.json";
+    private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
+
+    // EFFECTS: constructs list of meals and runs the meal app
+    public ConsoleApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        wishList = new MealWishList("MealWishList");
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         runMealApp();
     }
 
@@ -58,13 +71,16 @@ public class ConsoleApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processUserCommand(String command) {
-        if (command.equals("1")) {
+        if (command.equals("m")) {
             doViewMeals();
-
-        } else if (command.equals("2")) {
+        } else if (command.equals("p")) {
             doViewWishlist();
-        } else if (command.equals("exit")) {
+        } else if (command.equals("q")) {
             System.out.println("Goodbye!");
+        } else if (command.equals("s")) {
+            saveMealWishList();
+        } else if (command.equals("l")) {
+            loadMealWishList();
         } else {
             System.out.println("Invalid selection");
         }
@@ -77,10 +93,6 @@ public class ConsoleApp {
         System.out.println("Available Meals:\n");
         String masterListString = masterList.toString();
         System.out.println(masterListString);
-
-      //  System.out.println("To view Ingredients, please follow the following instructions:\n");
-      //  System.out.println("Input 'i' to view ingredients, followed by the number of the selected meal "
-     //           + "(for example: 'I0' to view ingredients of pizza");
         System.out.println("To add meal to personal wishlist, input 0, 1, 2, 3...");
         System.out.println("To exit View Meals, input b\n");
 
@@ -107,12 +119,7 @@ public class ConsoleApp {
         String wishListString = wishList.toString();
         System.out.println(wishListString);
 
-//        System.out.println("To view Ingredients or remove meal from Personal Wishlist, please enter two characters:\n");
-//        System.out.println("For the first character, input 'i' to go to view ingredients, followed by meal number: 0, 1, 2...\n");
-//        System.out.println("For example 'I0' to view ingredients of pizza\n");
-//        System.out.println("To remove meal from Personal Wishlist, input 'r' then 0, 1, 2, 3...\n");
-//        System.out.println("For example, 'R0' to remove pizza");
-     //   System.out.println("To remove meal from Personal Wishlist, input 0, 1, 3...");
+        System.out.println("To remove meal from Personal Wishlist, input 0, 1, 3...");
         System.out.println("To exit WishList, input b\n");
 
         if (input.hasNextInt()) {
@@ -127,34 +134,16 @@ public class ConsoleApp {
                 System.out.println("Invalid: heading back to main menu:\n");
             }
         }
-
-//        String commandText = input.next();
-//        commandText = commandText.toLowerCase();
-//        if (commandText.length() > 2) {
-//            System.out.println("Error: invalid command. Heading back to main menu.\n");
-//        } else {
-//            if (commandText.equals("b")) {
-//                System.out.println("Heading back to main menu");
-//            } else {
-//                char firstChar = commandText.charAt(0);
-//                char secondChar = commandText.charAt(1);
-//                if (commandText.length() == 1) {
-//                    System.out.println("Error: invalid command. Heading back to main menu");
-//                } else if (firstChar == 'r') {
-//                    int index = secondChar - '0';
-//                    boolean mealRemoved = wishList.getListOfMeals().get(index);
-//                }
-//            }
-//        }
-
     }
 
     // EFFECTS: displays menu of options to select
     private void displayMenu() {
-        System.out.println("1. View Meals");
-        System.out.println(("2. View Personal Wishlist\n"));
-        System.out.println(("Select 1 or 2"));
-        System.out.println("Input exit to end session");
+        System.out.println("\nSelect from:");
+        System.out.println("m -> View Meals");
+        System.out.println(("p -> View Personal Wishlist"));
+        System.out.println("s -> save meal wishlist to file");
+        System.out.println("l -> load meal wishlist to file");
+        System.out.println("q -> quit");
     }
 
     // MODIFIES: this
@@ -183,8 +172,8 @@ public class ConsoleApp {
     // MODIFIES: this
     // EFFECTS: initializes available list of meals
     private void initializeList() {
-        masterList = new MealWishList();
-        wishList = new MealWishList();
+        masterList = new MealWishList("MasterList");
+        wishList = new MealWishList("MealWishList");
 
         masterList.add(pizza);
         masterList.add(frenchToast);
@@ -200,7 +189,28 @@ public class ConsoleApp {
         masterList.add(rice);
         masterList.add(wings);
     }
+
+    // EFFECTS: saves meal wishlist to file
+    private void saveMealWishList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(wishList);
+            jsonWriter.close();
+            System.out.println("Saved " + wishList.getName() + " to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads meal wishlist to file
+    private void loadMealWishList() {
+        try {
+            wishList = jsonReader.read();
+            System.out.println("Loaded " + wishList.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
 }
-
-
 

@@ -1,11 +1,14 @@
 package model;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // This class represents a meal with a name, cuisine, price, and ingredients
-public class Meal {
+public class Meal implements Writable {
     private String name;
     private String cuisine;
     private int price;
@@ -35,30 +38,18 @@ public class Meal {
         return price;
     }
 
-//    public List<String> getIngredients() {
-//        return ingredients;
-//    }
-
-//    // EFFECTS: sets the name of the meal
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    // EFFECTS: sets the cuisine of the meal
-//    public void setCuisine() {
-//        this.cuisine = cuisine;
-//    }
-
-//    // EFFECTS: sets the price of the meal
-//    public void setPrice(int price) {
-//        this.price = price;
-//    }
-
     // EFFECTS: returns the meal information in form of String
     public String mealToText() {
-        String text = "";
-        text = name + "/" + cuisine + "/" + "$" + price;
-        return text;
+        return name + "/" + cuisine + "/" + "$" + price;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("cuisine", cuisine);
+        json.put("price", price);
+        return json;
     }
 
 }

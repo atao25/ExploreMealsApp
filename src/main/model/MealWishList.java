@@ -1,23 +1,29 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // This class represents the list of meals in the program, and can be used in presenting the wishlist
-public class MealWishList {
-
-    private ArrayList<Meal> listOfMeals;
+public class MealWishList implements Writable {
+    private String name;
+    private ArrayList<Meal> meals;
 
     // constructs a list of meals that is empty
-    public MealWishList() {
-
-        listOfMeals = new ArrayList<>();
+    public MealWishList(String name) {
+        this.name = name;
+        meals = new ArrayList<>();
     }
 
     // MODIFIES: this
     // EFFECTS: adds meal to the meal list
     public void add(Meal meal) {
 
-        listOfMeals.add(meal);
+        meals.add(meal);
 
     }
 
@@ -25,20 +31,28 @@ public class MealWishList {
     // EFFECTS: removes meal from the meal list
     public void remove(Meal meal) {
 
-        listOfMeals.remove(meal);
+        meals.remove(meal);
 
     }
 
-//    // EFFECTS: returns the number of meals in the list
-//    public int getNumOfMeals() {
-//
-//        return listOfMeals.size();
-//    }
+    public String getName() {
+
+        return name;
+    }
+
+    public int getNumMeals() {
+
+        return meals.size();
+    }
+
+    public List<Meal> getMeals() {
+        return Collections.unmodifiableList(meals);
+    }
 
     // EFFECTS: returns the list of meals
     public ArrayList<Meal> getListOfMeals() {
 
-        return listOfMeals;
+        return meals;
     }
 
     // REQUIRES: index >= 0
@@ -46,8 +60,8 @@ public class MealWishList {
     // EFFECT: removes a meal from meal list by index,
     //         returns true if meal is removed and false if index doesn't exist in meal list
     public boolean removeMealByIndex(int index) {
-        if (index >= 0 && index < listOfMeals.size()) {
-            listOfMeals.remove(index);
+        if (index >= 0 && index < meals.size()) {
+            meals.remove(index);
             return true;
         } else {
             return false;
@@ -57,8 +71,8 @@ public class MealWishList {
     // EFFECTS: returns the list of meals in form of String
     public String toString() {
         String output = "";
-        for (int i = 0; i < listOfMeals.size(); i++) {
-            Meal meal = listOfMeals.get(i);
+        for (int i = 0; i < meals.size(); i++) {
+            Meal meal = meals.get(i);
             String mealInfo = meal.mealToText();
             output = output + i + ". " + mealInfo + "\n";
         }
@@ -66,5 +80,25 @@ public class MealWishList {
 
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("meals", mealsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns meals in this list of meals
+    private JSONArray mealsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Meal m: meals) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
+    }
+
 
 }
+
