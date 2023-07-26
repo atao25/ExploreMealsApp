@@ -38,6 +38,7 @@ public class Meal implements Writable {
         return price;
     }
 
+
     // EFFECTS: returns the meal information in form of String
     public String mealToText() {
         return name + "/" + cuisine + "/" + "$" + price;
