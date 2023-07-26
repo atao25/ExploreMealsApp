@@ -16,19 +16,6 @@ import java.util.Scanner;
 // Citation: TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
 public class ConsoleApp {
-    private Meal pizza;
-    private Meal frenchToast;
-    private Meal macAndCheese;
-    private Meal scones;
-    private Meal cornDog;
-    private Meal sushi;
-    private Meal pork;
-    private Meal pasta;
-    private Meal curry;
-    private Meal pho;
-    private Meal salad;
-    private Meal rice;
-    private Meal wings;
     private MealWishList masterList;
     private MealWishList wishList;
 
