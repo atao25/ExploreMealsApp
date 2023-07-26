@@ -149,45 +149,17 @@ public class ConsoleApp {
     // MODIFIES: this
     // EFFECTS: initializes meals
     private void init() {
-        pizza = new Meal("Pizza", "Italian", 25);
-        frenchToast = new Meal("French Toast", "French", 22);
-        macAndCheese = new Meal("Mac and Cheese", "American", 21);
-        scones = new Meal("Lemon Blueberry Scones", "British", 20);
-        cornDog = new Meal("Corn Dog", "American", 18);
-        sushi = new Meal("California Roll Sushi", "Japan", 26);
-        pork = new Meal("Sweet and Sour Pork", "Chinese", 30);
-        pasta = new Meal("Tomato Pasta", "Italian", 28);
-        curry = new Meal("Chicken Curry", "Indian", 29);
-        pho = new Meal("Pho", "Vietnamese", 30);
-        salad = new Meal("Caesar Salad", "Italian", 25);
-        rice = new Meal("Bibimbap", "Korean", 32);
-        wings = new Meal("Chicken Wings", "American", 26);
 
-        initializeList();
+        try {
+            JsonReader reader = new JsonReader("./data/MasterMealWishList.json");
+            masterList = new MealWishList("masterList");
+            masterList = reader.read();
+        } catch (IOException e) {
+            System.out.println("File doesn't exist");
+        }
 
         input = new Scanner(System.in);
 
-    }
-
-    // MODIFIES: this
-    // EFFECTS: initializes available list of meals
-    private void initializeList() {
-        masterList = new MealWishList("MasterList");
-        wishList = new MealWishList("MealWishList");
-
-        masterList.add(pizza);
-        masterList.add(frenchToast);
-        masterList.add(macAndCheese);
-        masterList.add(scones);
-        masterList.add(cornDog);
-        masterList.add(sushi);
-        masterList.add(pork);
-        masterList.add(pasta);
-        masterList.add(curry);
-        masterList.add(pho);
-        masterList.add(salad);
-        masterList.add(rice);
-        masterList.add(wings);
     }
 
     // EFFECTS: saves meal wishlist to file

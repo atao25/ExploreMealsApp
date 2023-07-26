@@ -1,0 +1,67 @@
+{
+  "name": "MasterMealWishList",
+  "meals": [
+      {
+        "price": 25,
+        "name": "Pizza",
+        "cuisine": "Italian"
+      },
+      {
+        "price": 22,
+        "name": "French Toast",
+        "cuisine": "French"
+      },
+      {
+        "price": 21,
+        "name": "Mac and Cheese",
+        "cuisine": "American"
+      },
+      {
+        "price": 20,
+        "name": "Lemon Blueberry Scones",
+        "cuisine": "British"
+      },
+
+      {
+        "price": 18,
+        "name": "Corn Dog",
+        "cuisine": "American"
+      },
+      {
+        "price": 26,
+        "name": "Sushi",
+        "cuisine": "Japan"
+      },
+      {   "price": 30,
+        "name": "Sweet and Sour Pork",
+        "cuisine": "Chinese"
+      },
+      {   "price": 28,
+        "name": "Tomato Pasta",
+        "cuisine": "Italian"
+      },
+      {   "price": 29,
+        "name": "Chicken Curry",
+        "cuisine": "Indian"
+      },
+      {   "price": 30,
+        "name": "Pho",
+        "cuisine": "Vietnamese"
+      },
+      {   "price": 25,
+        "name": "Caesar Salad",
+        "cuisine": "Italian"
+      },
+      {   "price": 32,
+        "name": "Bibimbap",
+        "cuisine": "Korean"
+      },
+      {   "price": 26,
+        "name": "Chicken Wings",
+        "cuisine": "American"
+      }
+    ]
+}
+
+
+
