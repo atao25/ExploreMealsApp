@@ -11,6 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// This class references code from:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // Represents a reader that reads wishlist of meals from JSON data stored in file
 public class JsonReader {
     private String source;

@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// This class references code from:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // Represents a writer that writes JSON representation of meal wishlist file
 public class JsonWriter {
     private static final int TAB = 4;
@@ -31,11 +34,15 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
+    // MODIFIES: this
+    // EFFECTS: closes writer
     public void close() {
 
         writer.close();
     }
 
+    // MODIFIES: this
+    // EFFECTS: writes string to file
     private void saveToFile(String json) {
 
         writer.print(json);
