@@ -47,7 +47,7 @@ public class ConsoleApp {
         while (keepGoing) {
             displayMenu();
             command = input.next();
-            if (command.equals("exit")) {
+            if (command.equals("q")) {
                 keepGoing = false;
             }
             processUserCommand(command);

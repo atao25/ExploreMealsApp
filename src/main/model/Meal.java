@@ -43,6 +43,7 @@ public class Meal implements Writable {
     public String mealToText() {
         return name + "/" + cuisine + "/" + "$" + price;
     }
+    
 
     @Override
     public JSONObject toJson() {
