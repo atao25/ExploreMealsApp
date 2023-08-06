@@ -36,7 +36,7 @@ public class ConsoleApp {
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runMealApp() {
+    public void runMealApp() {
         boolean keepGoing = true;
         String command;
         Scanner input = new Scanner((System.in));
@@ -146,11 +146,14 @@ public class ConsoleApp {
         }
 
         input = new Scanner(System.in);
+    }
 
+    public MealWishList getWishList() {
+        return wishList;
     }
 
     // EFFECTS: saves meal wishlist to file
-    private void saveMealWishList() {
+    public void saveMealWishList() {
         try {
             jsonWriter.open();
             jsonWriter.write(wishList);
@@ -163,7 +166,7 @@ public class ConsoleApp {
 
     // MODIFIES: this
     // EFFECTS: loads meal wishlist to file
-    private void loadMealWishList() {
+    public void loadMealWishList() {
         try {
             wishList = jsonReader.read();
             System.out.println("Loaded " + wishList.getName() + " from " + JSON_STORE);
