@@ -3,7 +3,6 @@ package ui;
 import model.Meal;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,8 +27,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         cuisine = new JLabel();
         price = new JLabel();
 
-        detailsPanel = new JPanel(new GridLayout(1, 1));
-        // detailsPanel.setBorder(BorderFactory.createLineBorder());
+        detailsPanel = new JPanel(new GridLayout(0, 1));
         detailsPanel.add(name);
         detailsPanel.add(cuisine);
         detailsPanel.add(price);
@@ -37,7 +35,6 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         panel.add(detailsPanel, BorderLayout.WEST);  // change later with added image
 
         mealsSelected = new ArrayList<>();
-
 
     }
 
@@ -54,17 +51,16 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         price.setOpaque(true);
 
         if (isSelected) {
+
             isSelected();
 
         } else {
-            detailsPanel.setBorder(BorderFactory.createLineBorder(list.getBackground(), 10));
-            price.setBackground(list.getBackground());
-            name.setBackground(list.getBackground());
-            cuisine.setBackground(list.getBackground());
-            price.setBackground(list.getBackground());
-            if (mealsSelected.contains(value)) {
-                mealsSelected.remove(value);
-            }
+
+            notSelected();
+
+//            if (mealsSelected.contains(value)) {
+//                mealsSelected.remove(value);
+//            }
         }
 
         if (cellHasFocus) {
@@ -80,110 +76,24 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
     private void setUp() {
         name.setText(value.getName());
         cuisine.setText(value.getCuisine());
-        price.setText(String.valueOf(price));
+        price.setText(String.valueOf(value.getPrice()));
     }
 
     private void isSelected() {
-        detailsPanel.setBorder(BorderFactory.createLineBorder(list.getSelectionBackground(), 10));
         price.setBackground(list.getSelectionBackground());
         name.setBackground(list.getSelectionBackground());
         cuisine.setBackground(list.getSelectionBackground());
-        price.setBackground(list.getSelectionBackground());
-
         mealsSelected.add(value);
-
     }
 
-    private void isNotSelected() {
+    private void notSelected() {
         detailsPanel.setBorder(BorderFactory.createLineBorder(list.getBackground(), 10));
         price.setBackground(list.getBackground());
         name.setBackground(list.getBackground());
         cuisine.setBackground(list.getBackground());
-        price.setBackground(list.getBackground());
-        if (mealsSelected.contains(value)) {
-            mealsSelected.remove(value);
-        }
     }
+
+
 }
 
-// @Override
-//    public Component getListCellRendererComponent(JList<? extends Place> list, Place value, int index,
-//                                                  boolean isSelected, boolean cellHasFocus) {
-//
-//        imageDimensions = new Dimension(150, 125);
-//        this.value = value;
-//        this.list = list;
-//        dataSetup();
-//
-//        placeName.setOpaque(true);
-//        placeAddress.setOpaque(true);
-//        placeRating.setOpaque(true);
-//        placeImage.setOpaque(true);
-//
-//        if (isSelected) {
-//            itemSelected();
-//
-//        } else {
-//            itemReleased();
-//        }
-//
-//        return mainPanel;
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: the actions happen when items are no longer selected
-//    private void itemReleased() {
-//        textPanel.setBorder(BorderFactory.createLineBorder(list.getBackground(), 10));
-//        mainPanel.setBackground(list.getBackground());
-//        placeName.setBackground(list.getBackground());
-//        placeAddress.setBackground(list.getBackground());
-//        placeRating.setBackground(list.getBackground());
-//        placeImage.setBackground(list.getBackground());
-//        if (selectedPlaces.contains(value)) {
-//            selectedPlaces.remove(value);
-//        }
-//    }
-//
-//
-//    // MODIFIES: this
-//    // EFFECTS: the actions happen when items are being selected
-//    private void itemSelected() {
-//        textPanel.setBorder(BorderFactory.createLineBorder(list.getSelectionBackground(), 10));
-//        mainPanel.setBackground(list.getSelectionBackground());
-//        placeName.setBackground(list.getSelectionBackground());
-//        placeAddress.setBackground(list.getSelectionBackground());
-//        placeRating.setBackground(list.getSelectionBackground());
-//        placeImage.setBackground(list.getSelectionBackground());
-//
-//        if (!selectedPlaces.contains(value)) {
-//            selectedPlaces.add(value);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: assigns the data to its appropriate field in the list
-//    private void dataSetup() {
-//        placeName.setText(value.getName());
-//        placeAddress.setText(value.getLocation());
-//        placeRating.setText(value.getRating());
-//        placeImage.setPreferredSize(imageDimensions);
-//        placeImage.setBorder(BorderFactory.createLineBorder(Color.red, 2));
-//        String iconPath;
-//
-//        if (value.getPicture() != null) {
-//            iconPath = "src/res/places pictures/" + value.getPicture();
-//        } else {
-//            iconPath = "src/res/places pictures/null.png";
-//        }
-//
-//        ImageIcon imageIcon = new ImageIcon(
-//                new ImageIcon(iconPath).getImage().getScaledInstance(
-//                        imageDimensions.width, imageDimensions.height, Image.SCALE_DEFAULT));
-//        placeImage.setIcon(imageIcon);
-//    }
-//
-//    public ArrayList<Place> getSelectedPlaces() {
-//        return selectedPlaces;
-//    }
-//
-//}
+
