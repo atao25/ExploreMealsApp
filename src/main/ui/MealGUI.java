@@ -42,7 +42,7 @@ public class MealGUI {
     private JButton deleteMealButton;
     private DefaultListModel<Meal> wishListModel = new DefaultListModel<>();    // wishlist
     private JList<Meal> wishList = new JList<>(wishListModel);
-
+//
     // json
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
@@ -73,7 +73,7 @@ public class MealGUI {
         new MealGUI();
     }
 
-    // MODIFIES: main frame
+    // MODIFIES: mainFrame
     // EFFECTS: sets up the main frame
     public void setFrame() {
         mainFrame.setTitle("ExploreMeals App");
@@ -82,7 +82,7 @@ public class MealGUI {
 
     }
 
-    // MODIFIES: main frame
+    // MODIFIES: mainFrame
     // EFFECTS: sets up the layout of the main panel
     private JPanel setUpMainPanel() {
         JPanel panel = new JPanel();
@@ -92,7 +92,7 @@ public class MealGUI {
         return panel;
     }
 
-    // MODIFIES: main frame
+    // MODIFIES: mainFrame
     // EFFECTS: sets up the main container with the welcome message and buttons
     private void makeMainContainer() {
         welcomeMessage = new JLabel("Welcome to Explore Meals!", SwingConstants.CENTER);
@@ -105,7 +105,7 @@ public class MealGUI {
         mainContainer.add(createExitButton());
     }
 
-    // MODIFIES: main frame
+    // MODIFIES: mainFrame
     // EFFECTS: creates the view meals button and allows user to view master list of meals when clicked
     private JButton createViewMealsButton() {
         viewMealsButton = new JButton("View Meals");
@@ -120,8 +120,8 @@ public class MealGUI {
         return viewMealsButton;
     }
 
-    // MODIFIES: main frame
-    // EFFECTS:
+    // MODIFIES: mainFrame
+    // EFFECTS: creates view personal wishlist button and allows user to view wishlist when clicked
     private JButton createWishListButton() {
         wishListButton = new JButton("View Personal WishList");
         wishListButton.setFocusable(false);
@@ -135,6 +135,8 @@ public class MealGUI {
         return wishListButton;
     }
 
+    // MODIFIES: mainFrame
+    // EFFECTS: creates save button and allows user to save their data when clicked
     private JButton createSaveButton() {
         saveButton = new JButton("Save WishList");
         saveButton.setFocusable(false);
@@ -149,6 +151,7 @@ public class MealGUI {
         return saveButton;
     }
 
+    // EFFECTS: saves data to file
     private void saveWishListToFile() {
         try {
             jsonWriter = new JsonWriter(JSON_STORE);
@@ -161,6 +164,8 @@ public class MealGUI {
         }
     }
 
+    // MODIFIES: mainFrame
+    // EFFECTS: creates exit button and allows user to quit the app when clicked,
     private JButton createExitButton() {
         exitButton = new JButton("Exit App");
         exitButton.setFocusable(false);
@@ -174,6 +179,8 @@ public class MealGUI {
         return exitButton;
     }
 
+    // MODIFIES: mainFrame
+    // EFFECTS: closes the app, reminds user to save data using confirmation dialog
     private void closeApp() {
         int result = JOptionPane.showConfirmDialog(null, "Did you save your data?", "Confirm Save",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -187,6 +194,8 @@ public class MealGUI {
         }
     }
 
+    // MODIFIES: mainFrame
+    // EFFECTS: displays load wishlist dialog
     private void loadWishListDialog() {
         int result = JOptionPane.showConfirmDialog(null, "Would you like to load an existing wishlist of meals?",
                 "Load Wishlist", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -205,6 +214,8 @@ public class MealGUI {
                         wishListModel.addElement(meal);
                     }
 
+                    wishList.setCellRenderer(new MealListDisplay());
+
                 } catch (IOException e) {
                     System.out.println("Unable to read from file " + JSON_STORE);
                 }
@@ -212,6 +223,7 @@ public class MealGUI {
         }
     }
 
+    //
     private JFrame viewMealsFrame() {
         setUpViewMeal();
 
@@ -274,19 +286,19 @@ public class MealGUI {
 
     private JList<Meal> createMasterList() {
 
-        listModel.addElement(new Meal("Pizza", "Italian", 25));
-        listModel.addElement(new Meal("French Toast", "French", 22));
-        listModel.addElement(new Meal("Mac and Cheese", "American", 21));
-        listModel.addElement(new Meal("Lemon Blueberry Scone", "British", 20));
-        listModel.addElement(new Meal("Corn Dog", "American", 18));
-        listModel.addElement(new Meal("Sushi", "Japan", 26));
-        listModel.addElement(new Meal("Sweet and Sour Pork", "Chinese", 30));
-        listModel.addElement(new Meal("Tomato Pasta", "Italian", 28));
-        listModel.addElement(new Meal("Chicken Curry", "Indian", 29));
-        listModel.addElement(new Meal("Pho", "Vietnamese", 30));
-        listModel.addElement(new Meal("Caesar Salad", "Italian", 25));
-        listModel.addElement(new Meal("Bibimbap", "Korean", 32));
-        listModel.addElement(new Meal("Chicken Wings", "American", 26));
+        listModel.addElement(new Meal("Pizza", "Italian", 25, "./data/pizza.jpeg"));
+        listModel.addElement(new Meal("French Toast", "French", 22, "./data/frenchToast.png"));
+        listModel.addElement(new Meal("Mac and Cheese", "American", 21, "./data/macAndCheese.png"));
+        listModel.addElement(new Meal("Lemon Blueberry Scone", "British", 20, "./data/scone.png"));
+        listModel.addElement(new Meal("Corn Dog", "American", 18, "./data/cornDog.png"));
+        listModel.addElement(new Meal("Sushi", "Japan", 26, "./data/sushi.png"));
+        listModel.addElement(new Meal("Sweet and Sour Pork", "Chinese", 30, "./data/sweetAndSourPork.png"));
+        listModel.addElement(new Meal("Tomato Pasta", "Italian", 28, "./data/pasta.png"));
+        listModel.addElement(new Meal("Chicken Curry", "Indian", 29, "./data/curry.png"));
+        listModel.addElement(new Meal("Pho", "Vietnamese", 30, "./data/pho.png"));
+        listModel.addElement(new Meal("Caesar Salad", "Italian", 25,"./data/caesarSalad.png"));
+        listModel.addElement(new Meal("Bibimbap", "Korean", 32, "./data/bibimbap.png"));
+        listModel.addElement(new Meal("Chicken Wings", "American", 26, "./data/chickenWings.png"));
 
         masterList.setCellRenderer(mealDisplay);
 
@@ -337,6 +349,8 @@ public class MealGUI {
         return selectionPanel;
     }
 
+    // MODIFIES: personalWishListFrame
+    // EFFECTS: creates delete meal button and allows user to delete selected meal from wishlist
     private JButton createDeleteMealButton() {
         deleteMealButton = new JButton("Delete selected meal");
         deleteMealButton.addActionListener(new AbstractAction() {

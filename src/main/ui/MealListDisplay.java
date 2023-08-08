@@ -4,7 +4,7 @@ import model.Meal;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class MealListDisplay implements ListCellRenderer<Meal> {
     private JPanel panel;
@@ -12,11 +12,14 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
     private JLabel name;
     private JLabel cuisine;
     private JLabel price;
-
     private Meal value;
     private JList<? extends Meal> list;
 
-    private ArrayList<Meal> mealsSelected;
+    // image
+    private JLabel imageLabel;
+    private Dimension imageDimension;
+
+
 
     public MealListDisplay() {
 
@@ -27,19 +30,24 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         cuisine = new JLabel();
         price = new JLabel();
 
+        imageLabel = new JLabel();
+        imageDimension = new Dimension(100, 100);
+
+
         detailsPanel = new JPanel(new GridLayout(0, 1));
         detailsPanel.add(name);
         detailsPanel.add(cuisine);
         detailsPanel.add(price);
 
-        panel.add(detailsPanel, BorderLayout.WEST);  // change later with added image
+        panel.add(imageLabel, BorderLayout.WEST);
+        panel.add(detailsPanel, BorderLayout.CENTER);  // change later with added image
 
-        mealsSelected = new ArrayList<>();
 
     }
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Meal> list,
+
                                                   Meal value, int index, boolean isSelected, boolean cellHasFocus) {
         this.value = value;
         this.list = list;
@@ -49,6 +57,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         name.setOpaque(true);
         cuisine.setOpaque(true);
         price.setOpaque(true);
+        imageLabel.setOpaque(true);
 
         if (isSelected) {
 
@@ -57,10 +66,6 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         } else {
 
             notSelected();
-
-//            if (mealsSelected.contains(value)) {
-//                mealsSelected.remove(value);
-//            }
         }
 
         if (cellHasFocus) {
@@ -77,13 +82,30 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         name.setText(value.getName());
         cuisine.setText(value.getCuisine());
         price.setText(String.valueOf(value.getPrice()));
+
+        imageLabel.setPreferredSize(imageDimension);
+
+        imageLabel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+
+
+        try {
+            Image img = value.getImage();
+            if (img != null) {
+                imageLabel.setIcon(new ImageIcon(img));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void isSelected() {
         price.setBackground(list.getSelectionBackground());
         name.setBackground(list.getSelectionBackground());
         cuisine.setBackground(list.getSelectionBackground());
-        mealsSelected.add(value);
+        imageLabel.setBackground(list.getSelectionBackground());
+
     }
 
     private void notSelected() {
@@ -91,6 +113,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         price.setBackground(list.getBackground());
         name.setBackground(list.getBackground());
         cuisine.setBackground(list.getBackground());
+        imageLabel.setBackground(list.getBackground());
     }
 
 

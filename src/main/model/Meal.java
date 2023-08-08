@@ -4,23 +4,35 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 
 // This class represents a meal with a name, cuisine, price, and ingredients
 public class Meal implements Writable {
     private String name;
     private String cuisine;
     private int price;
-    private List<String> ingredients;
+
+    // image
+    private String imagePath;
+
+    private int imageWidth = 100;
+    private int imageHeight = 100;
+
 
 
     // EFFECTS: creates a meal with name, cuisine, empty list of ingredients
-    public Meal(String name, String cuisine, int price) {
+    public Meal(String name, String cuisine, int price, String imagePath) {
         this.name = name;
         this.cuisine = cuisine;
         this.price = price;
-        this.ingredients = new ArrayList<>();
+        this.imagePath = imagePath;
+
     }
 
     // EFFECTS: gets the name of the meal
@@ -39,6 +51,17 @@ public class Meal implements Writable {
     }
 
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public Image getImage() throws IOException {
+        BufferedImage img = ImageIO.read(new File(imagePath));
+        return img.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH);
+
+    }
+
+
     // EFFECTS: returns the meal information in form of String
     public String mealToText() {
         return name + "/" + cuisine + "/" + "$" + price;
@@ -51,6 +74,8 @@ public class Meal implements Writable {
         json.put("name", name);
         json.put("cuisine", cuisine);
         json.put("price", price);
+        json.put("image", imagePath);
+
         return json;
     }
 

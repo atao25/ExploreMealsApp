@@ -66,8 +66,9 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String cuisine = jsonObject.getString("cuisine");
         int price = jsonObject.getInt("price");
+        String image = jsonObject.getString("image");
 
-        Meal meal = new Meal(name, cuisine, price);
+        Meal meal = new Meal(name, cuisine, price, image);
         ml.add(meal);
 
     }
