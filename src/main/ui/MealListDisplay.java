@@ -55,11 +55,6 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
         setUp();
 
-        name.setOpaque(true);
-        cuisine.setOpaque(true);
-        price.setOpaque(true);
-        imageLabel.setOpaque(true);
-
         if (isSelected) {
 
             isSelected();
@@ -86,8 +81,12 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         cuisine.setText(value.getCuisine());
         price.setText(String.valueOf(value.getPrice()));
 
-        imageLabel.setPreferredSize(imageDimension);
+        name.setOpaque(true);
+        cuisine.setOpaque(true);
+        price.setOpaque(true);
+        imageLabel.setOpaque(true);
 
+        imageLabel.setPreferredSize(imageDimension);
         imageLabel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
 
 
