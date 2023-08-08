@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MealWishListTest {
 
     MealWishList mealList;
-    Meal meal1 = new Meal("Pizza", "Italian", 20);
-    Meal meal2 = new Meal("Sushi", "Japanese", 22);
-    Meal meal3 = new Meal("Mac and Cheese", "American", 18);
-    Meal meal4 = new Meal("Pasta", "Italian", 32);
+    Meal meal1 = new Meal("Pizza", "Italian", 20, "./data/pizza/jpeg");
+    Meal meal2 = new Meal("Sushi", "Japanese", 22, "./data/sushi.png");
+    Meal meal3 = new Meal("Mac and Cheese", "American", 18, "./data/macAndCheese.png");
+    Meal meal4 = new Meal("Pasta", "Italian", 32, "./data/pasta.png");
 
     @BeforeEach
     void setUp() {

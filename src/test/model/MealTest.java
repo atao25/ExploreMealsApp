@@ -15,7 +15,7 @@ public class MealTest {
 
     @BeforeEach
     void setUp() {
-        testMeal = new Meal("Pizza", "Italian", 20);
+        testMeal = new Meal("Pizza", "Italian", 20, "./data/pizza.jpeg");
         testIngredients = new ArrayList<>();
     }
 
