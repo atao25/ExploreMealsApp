@@ -47,8 +47,8 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralMealWishList() {
         try {
             MealWishList ml = new MealWishList("MealWishList");
-            ml.add(new Meal("Pizza", "Italian", 25));
-            ml.add(new Meal("French Toast", "French", 22));
+            ml.add(new Meal("Pizza", "Italian", 25, "./data/pizza/jpeg"));
+            ml.add(new Meal("French Toast", "French", 22, "./data/frenchToast.png"));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralMealWishList.json");
             writer.open();
             writer.write(ml);
