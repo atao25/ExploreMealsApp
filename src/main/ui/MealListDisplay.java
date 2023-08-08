@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+// Represents renderer for list of meals
 public class MealListDisplay implements ListCellRenderer<Meal> {
     private JPanel panel;
     private JPanel detailsPanel;
@@ -15,12 +16,12 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
     private Meal value;
     private JList<? extends Meal> list;
 
-    // image
     private JLabel imageLabel;
     private Dimension imageDimension;
 
 
 
+    // EFFECTS: constructs the renderer
     public MealListDisplay() {
 
         panel = new JPanel(new BorderLayout());
@@ -78,6 +79,8 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: assigns data to its appropriate field, creates the displayed version of data
     private void setUp() {
         name.setText(value.getName());
         cuisine.setText(value.getCuisine());
@@ -100,6 +103,8 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets background for a selected meal
     private void isSelected() {
         price.setBackground(list.getSelectionBackground());
         name.setBackground(list.getSelectionBackground());
@@ -108,6 +113,8 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets background for an unselected meal
     private void notSelected() {
         detailsPanel.setBorder(BorderFactory.createLineBorder(list.getBackground(), 10));
         price.setBackground(list.getBackground());
@@ -115,7 +122,6 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         cuisine.setBackground(list.getBackground());
         imageLabel.setBackground(list.getBackground());
     }
-
 
 }
 

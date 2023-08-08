@@ -40,9 +40,9 @@ public class MealGUI {
     private JFrame viewPersonalWishListFrame;
     private JPanel wishListPanel;
     private JButton deleteMealButton;
-    private DefaultListModel<Meal> wishListModel = new DefaultListModel<>();    // wishlist
+    private DefaultListModel<Meal> wishListModel = new DefaultListModel<>();   // wishlist
     private JList<Meal> wishList = new JList<>(wishListModel);
-//
+
     // json
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
@@ -223,7 +223,7 @@ public class MealGUI {
         }
     }
 
-    //
+    // EFFECTS: creates viewMealsFrame
     private JFrame viewMealsFrame() {
         setUpViewMeal();
 
@@ -237,6 +237,7 @@ public class MealGUI {
         return viewMealsFrame;
     }
 
+    // MODIFIES: viewMealsFrame
     // EFFECTS: sets up the frame for view meals
     private void setUpViewMeal() {
         viewMealsFrame = new JFrame();
@@ -246,6 +247,8 @@ public class MealGUI {
         viewMealsFrame.setResizable(false);
     }
 
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: creates the top panel for viewMealsFrame
     private JPanel makeNorthPanel() {
         JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         northPanel.add(createAddMealButton());
@@ -253,6 +256,8 @@ public class MealGUI {
         return northPanel;
     }
 
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: creates the panel for the list of meals
     private JPanel makeSelectionPanel() {
         JPanel selectionPanel = new JPanel(new BorderLayout());
         selectionPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.CYAN, 1),
@@ -266,6 +271,8 @@ public class MealGUI {
         return selectionPanel;
     }
 
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: creates add meal button and allows user to add selected meal to personal wishlist
     private JButton createAddMealButton() {
         addMealButton = new JButton("Add to personal wishlist");
         addMealButton.addActionListener(new AbstractAction() {
@@ -284,6 +291,8 @@ public class MealGUI {
         return addMealButton;
     }
 
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: creates JList of available meals
     private JList<Meal> createMasterList() {
 
         listModel.addElement(new Meal("Pizza", "Italian", 25, "./data/pizza.jpeg"));
@@ -305,6 +314,7 @@ public class MealGUI {
         return masterList;
     }
 
+    // EFFECTS: creates the view personal wishlist frame
     private JFrame personalWishListFrame() {
         setUpWishList();
 
@@ -321,6 +331,8 @@ public class MealGUI {
 
     }
 
+    // MODIFIES: viewPersonalWishListFrame
+    // EFFECTS: sets up the view personal wishlist frame
     private void setUpWishList() {
         viewPersonalWishListFrame = new JFrame();
         viewPersonalWishListFrame.setSize(frameDimensions);
@@ -329,6 +341,8 @@ public class MealGUI {
         viewPersonalWishListFrame.setResizable(false);
     }
 
+    // MODIFIES: viewPersonalWishListFrame
+    // EFFECTS: constructs the top panel for the frame
     private JPanel makeTopPanel() {
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         topPanel.add(createDeleteMealButton());
@@ -336,6 +350,8 @@ public class MealGUI {
         return topPanel;
     }
 
+    // MODIFIES: viewPersonalWishListFrame
+    // EFFECTS: creates panel for wishlist
     private JPanel makeListPanel() {
         JPanel selectionPanel = new JPanel(new BorderLayout());
         selectionPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.CYAN, 1),
@@ -349,7 +365,7 @@ public class MealGUI {
         return selectionPanel;
     }
 
-    // MODIFIES: personalWishListFrame
+    // MODIFIES: viewPersonalWishListFrame
     // EFFECTS: creates delete meal button and allows user to delete selected meal from wishlist
     private JButton createDeleteMealButton() {
         deleteMealButton = new JButton("Delete selected meal");
@@ -363,6 +379,8 @@ public class MealGUI {
         return deleteMealButton;
     }
 
+    // MODIFIES: viewPersonalWishListFrame
+    // EFFECTS: creates delete confirmation dialog
     private void deleteDialog() {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this meal?",
                 "Confirm Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

@@ -18,9 +18,7 @@ public class Meal implements Writable {
     private String cuisine;
     private int price;
 
-    // image
     private String imagePath;
-
     private int imageWidth = 100;
     private int imageHeight = 100;
 
@@ -50,17 +48,12 @@ public class Meal implements Writable {
         return price;
     }
 
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
+    // EFFECTS: gets image from file
     public Image getImage() throws IOException {
         BufferedImage img = ImageIO.read(new File(imagePath));
         return img.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH);
 
     }
-
 
     // EFFECTS: returns the meal information in form of String
     public String mealToText() {
