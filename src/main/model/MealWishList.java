@@ -24,15 +24,15 @@ public class MealWishList implements Writable {
     public void add(Meal meal) {
 
         meals.add(meal);
+        EventLog.getInstance().logEvent(new Event("Meal: " + meal.getName() + " was added to "
+                 + getName() + "."));
 
     }
 
     // MODIFIES: this
     // EFFECTS: removes meal from the meal list
     public void remove(Meal meal) {
-
         meals.remove(meal);
-
     }
 
     public String getName() {
@@ -60,12 +60,18 @@ public class MealWishList implements Writable {
     // EFFECT: removes a meal from meal list by index,
     //         returns true if meal is removed and false if index doesn't exist in meal list
     public boolean removeMealByIndex(int index) {
+        String name = meals.get(index).getName();
+
+        EventLog.getInstance().logEvent(new Event("Meal: " + name + " was removed from "
+                + getName() + "."));
+
         if (index >= 0 && index < meals.size()) {
             meals.remove(index);
             return true;
         } else {
             return false;
         }
+
     }
 
     // EFFECTS: returns the list of meals in form of String

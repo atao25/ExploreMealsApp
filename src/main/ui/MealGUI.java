@@ -1,7 +1,6 @@
 package ui;
 
-import model.Meal;
-import model.MealWishList;
+import model.*;
 
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -47,7 +46,6 @@ public class MealGUI {
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
     private static final String JSON_STORE = "./data/mealWishList.json";
-
 
 
     // EFFECTS: constructs the main application window
@@ -160,7 +158,7 @@ public class MealGUI {
             jsonWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Error");  // change
+            System.out.println("Error");
         }
     }
 
@@ -190,6 +188,10 @@ public class MealGUI {
                 System.out.println("No");
                 break;
             case JOptionPane.YES_OPTION:
+
+                for (model.Event e : model.EventLog.getInstance()) {
+                    System.out.println(e);
+                }
                 System.exit(0);
         }
     }
@@ -210,7 +212,7 @@ public class MealGUI {
                     mealWishList = jsonReader.read();
                     wishListModel.clear();
 
-                    for (Meal meal: mealWishList.getMeals()) {
+                    for (Meal meal : mealWishList.getMeals()) {
                         wishListModel.addElement(meal);
                     }
 
@@ -305,7 +307,7 @@ public class MealGUI {
         listModel.addElement(new Meal("Tomato Pasta", "Italian", 28, "./data/pasta.png"));
         listModel.addElement(new Meal("Chicken Curry", "Indian", 29, "./data/curry.png"));
         listModel.addElement(new Meal("Pho", "Vietnamese", 30, "./data/pho.png"));
-        listModel.addElement(new Meal("Caesar Salad", "Italian", 25,"./data/caesarSalad.png"));
+        listModel.addElement(new Meal("Caesar Salad", "Italian", 25, "./data/caesarSalad.png"));
         listModel.addElement(new Meal("Bibimbap", "Korean", 32, "./data/bibimbap.png"));
         listModel.addElement(new Meal("Chicken Wings", "American", 26, "./data/chickenWings.png"));
 
@@ -394,10 +396,12 @@ public class MealGUI {
                 int selectedMeal = wishList.getSelectedIndex();
                 wishListModel.remove(selectedMeal);
                 mealWishList.removeMealByIndex(selectedMeal);
-
         }
 
     }
+
 }
+
+
 
 

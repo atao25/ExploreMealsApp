@@ -17,5 +17,23 @@ As a full-time student, I believe this application is a great opportunity to dev
 - As a user, I want to be able to save my wishlist to file
 - As a user, I want to be able to load my wishlist from file
 
+## Phase 4: Task 2
+Wed Aug 09 21:00:20 PDT 2023
+Meal: Pizza was added to My Wishlist.
 
+Wed Aug 09 21:00:22 PDT 2023
+Meal: French Toast was added to My Wishlist.
 
+Wed Aug 09 21:00:24 PDT 2023
+Meal: Mac and Cheese was added to My Wishlist.
+
+Wed Aug 09 21:00:27 PDT 2023
+Meal: Caesar Salad was added to My Wishlist.
+
+Wed Aug 09 21:00:37 PDT 2023
+Meal: Mac and Cheese was removed from My Wishlist.
+
+## Phase 4: Task 3
+- Break down the MealGUI into smaller classes that handles different tasks, such as managing the main frame, masterlist frame, and wishlist frame to provide better readability
+- Create helper methods for repetitive code like creating a button to reduce redundancy
+- Create an abstract class or interface for the main menu, master wishlist, and personal wishlist panels since they share a lot of the same methods which can be outlined in one class

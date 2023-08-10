@@ -48,8 +48,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Meal> list,
-
-                                                  Meal value, int index, boolean isSelected, boolean cellHasFocus) {
+            Meal value, int index, boolean isSelected, boolean cellHasFocus) {
         this.value = value;
         this.list = list;
 
