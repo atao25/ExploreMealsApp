@@ -13,6 +13,7 @@ As a full-time student, I believe this application is a great opportunity to not
 - As a user, I want to be able to view my personal wishlist of meals
 - As a user, I want to be able to add meals to my wishlist
 - As a user, I want to be able to delete meals from my wishlist
+- As a user, I want to be able to view the ingredients of the meals
 - As a user, I want to be able to close the application 
 - As a user, I want to be able to save my wishlist to file
 - As a user, I want to be able to load my wishlist from file
