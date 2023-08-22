@@ -1,0 +1,32 @@
+{
+    "name": "My Wishlist",
+    "meals": [
+        {
+            "image": "./data/frenchToast.png",
+            "price": 22,
+            "name": "French Toast",
+            "cuisine": "French",
+            "ingredients": [
+                "eggs",
+                "milk",
+                "cinnamon",
+                "vanilla extract",
+                "salt"
+            ]
+        },
+        {
+            "image": "./data/macAndCheese.png",
+            "price": 21,
+            "name": "Mac and Cheese",
+            "cuisine": "American",
+            "ingredients": [
+                "flour",
+                "milk",
+                "olive oil",
+                "pepper",
+                "cheese",
+                "salt"
+            ]
+        }
+    ]
+}

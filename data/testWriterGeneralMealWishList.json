@@ -1,0 +1,15 @@
+{
+    "name": "MealWishList",
+    "meals": [
+        {
+            "price": 25,
+            "name": "Pizza",
+            "cuisine": "Italian"
+        },
+        {
+            "price": 22,
+            "name": "French Toast",
+            "cuisine": "French"
+        }
+    ]
+}
