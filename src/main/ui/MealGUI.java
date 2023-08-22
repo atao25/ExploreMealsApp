@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -26,16 +27,18 @@ public class MealGUI {
     private JButton saveButton;
     private JButton exitButton;
 
-    // for view meals frame
+    // view meals frame
     private JFrame viewMealsFrame;
     private JPanel masterListPanel;
     private JButton addMealButton;
+    private JButton viewIngredientsButton;
     private MealWishList mealWishList;
     protected MealListDisplay mealDisplay;
     private DefaultListModel<Meal> listModel = new DefaultListModel<>();  // masterlist
     private JList<Meal> masterList = new JList<>(listModel);
 
-    // for wishlist frame
+
+    // wishlist frame
     private JFrame viewPersonalWishListFrame;
     private JPanel wishListPanel;
     private JButton deleteMealButton;
@@ -75,6 +78,7 @@ public class MealGUI {
     // EFFECTS: sets up the main frame
     public void setFrame() {
         mainFrame.setTitle("ExploreMeals App");
+
         mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         mainFrame.setSize(frameDimensions.width, frameDimensions.height);
 
@@ -95,6 +99,7 @@ public class MealGUI {
     private void makeMainContainer() {
         welcomeMessage = new JLabel("Welcome to Explore Meals!", SwingConstants.CENTER);
         welcomeMessage.setFont(new Font(Font.SERIF, Font.BOLD, 26));
+        welcomeMessage.setForeground(Color.BLUE);
 
         mainContainer.add(welcomeMessage);
         mainContainer.add(createViewMealsButton());
@@ -254,15 +259,17 @@ public class MealGUI {
     private JPanel makeNorthPanel() {
         JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         northPanel.add(createAddMealButton());
+        northPanel.add(createIngredientsButton());
 
         return northPanel;
     }
+
 
     // MODIFIES: viewMealsFrame
     // EFFECTS: creates the panel for the list of meals
     private JPanel makeSelectionPanel() {
         JPanel selectionPanel = new JPanel(new BorderLayout());
-        selectionPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.CYAN, 1),
+        selectionPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLUE, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         JScrollPane mealScrollPane = new JScrollPane(createMasterList());
@@ -271,6 +278,33 @@ public class MealGUI {
         selectionPanel.add(mealScrollPane);
 
         return selectionPanel;
+    }
+
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: creates view ingredients button and allows user to view the ingredients of the meal
+    private JButton createIngredientsButton() {
+        viewIngredientsButton = new JButton("View Ingredients");
+        viewIngredientsButton.setFocusable(false);
+        viewIngredientsButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showIngredientsDialog();
+            }
+        });
+
+        return viewIngredientsButton;
+    }
+
+    // MODIFIES: viewMealsFrame
+    // EFFECTS: shows the list of ingredients for the selected meal
+    private void showIngredientsDialog() {
+        int selectedIndex = masterList.getSelectedIndex();
+        if (selectedIndex != -1) {
+            Meal selectedMeal = listModel.getElementAt(selectedIndex);
+            String ingredients = String.join(", ", selectedMeal.getIngredients());
+            JOptionPane.showMessageDialog(null, "Ingredients: " + ingredients,
+                    "Meal Ingredients", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     // MODIFIES: viewMealsFrame
@@ -297,19 +331,39 @@ public class MealGUI {
     // EFFECTS: creates JList of available meals
     private JList<Meal> createMasterList() {
 
-        listModel.addElement(new Meal("Pizza", "Italian", 25, "./data/pizza.jpeg"));
-        listModel.addElement(new Meal("French Toast", "French", 22, "./data/frenchToast.png"));
-        listModel.addElement(new Meal("Mac and Cheese", "American", 21, "./data/macAndCheese.png"));
-        listModel.addElement(new Meal("Lemon Blueberry Scone", "British", 20, "./data/scone.png"));
-        listModel.addElement(new Meal("Corn Dog", "American", 18, "./data/cornDog.png"));
-        listModel.addElement(new Meal("Sushi", "Japan", 26, "./data/sushi.png"));
-        listModel.addElement(new Meal("Sweet and Sour Pork", "Chinese", 30, "./data/sweetAndSourPork.png"));
-        listModel.addElement(new Meal("Tomato Pasta", "Italian", 28, "./data/pasta.png"));
-        listModel.addElement(new Meal("Chicken Curry", "Indian", 29, "./data/curry.png"));
-        listModel.addElement(new Meal("Pho", "Vietnamese", 30, "./data/pho.png"));
-        listModel.addElement(new Meal("Caesar Salad", "Italian", 25, "./data/caesarSalad.png"));
-        listModel.addElement(new Meal("Bibimbap", "Korean", 32, "./data/bibimbap.png"));
-        listModel.addElement(new Meal("Chicken Wings", "American", 26, "./data/chickenWings.png"));
+        listModel.addElement(new Meal("Pizza", "Italian", 25, "./data/pizza.jpeg",
+                Arrays.asList("dough", "tomato sauce", "cheese", "toppings", "olive oil", "yeast")));
+        listModel.addElement(new Meal("French Toast", "French", 22, "./data/frenchToast.png",
+                Arrays.asList("eggs", "milk", "cinnamon", "vanilla extract", "salt")));
+        listModel.addElement(new Meal("Mac and Cheese", "American", 21, "./data/macAndCheese.png",
+                Arrays.asList("flour", "milk", "olive oil", "pepper", "cheese", "salt")));
+        listModel.addElement(new Meal("Lemon Blueberry Scone", "British", 20, "./data/scone.png",
+                Arrays.asList("flour", "sugar", "salt", "baking soda", "butter", "blueberries", "lemon skin")));
+        listModel.addElement(new Meal("Corn Dog", "American", 18, "./data/cornDog.png",
+                Arrays.asList("flour", "sugar", "salt", "yeast", "egg", "sausage", "bread crumbs")));
+        listModel.addElement(new Meal("Sushi", "Japan", 26, "./data/sushi.png",
+                Arrays.asList("sushi rice", "rice vinegar", "nori", "sesame seeds", "imitation crab",
+                        "cucumber", "avocado")));
+        listModel.addElement(new Meal("Sweet and Sour Pork", "Chinese", 30, "./data/sweetAndSourPork.png",
+                Arrays.asList("pork", "soy sauce", "salt", "sugar", "egg white", "green onions", "olive oil",
+                        "cornstarch", "vegetable oil", "celery", "red onion", "sugar")));
+        listModel.addElement(new Meal("Tomato Pasta", "Italian", 28, "./data/pasta.png",
+                Arrays.asList("uncooked pasta", "butter", "garlic", "tomato paste", "tomato sauce", "whipping cream",
+                        "italian seasoning", "salt and pepper", "parmesan cheese")));
+        listModel.addElement(new Meal("Chicken Curry", "Indian", 29, "./data/curry.png",
+                Arrays.asList("olive oil", "onion", "garlic", "curry powder", "cinnamon", "paprika", "sugar", "salt",
+                        "boneless chicken breast", "tomato paste", "plain yogurt", "coconut milk", "pepper")));
+        listModel.addElement(new Meal("Pho", "Vietnamese", 30, "./data/pho.png",
+                Arrays.asList("beef bone broth", "rice noodles", "beef", "fish sauce", "onion", "ginger", "salt",
+                        "cilantro", "green onion", "basil", "lime", "sriracha")));
+        listModel.addElement(new Meal("Caesar Salad", "Italian", 25, "./data/caesarSalad.png",
+                Arrays.asList("romaine lettuce", "cheese", "croutons", "caesar salad dressing")));
+        listModel.addElement(new Meal("Bibimbap", "Korean", 32, "./data/bibimbap.png",
+                Arrays.asList("beef mince", "soy sauce", "sesame oil", "brown sugar", "garlic", "spinach",
+                        "bean sprouts", "salt", "steamed rice", "eggs", "cooking oil", "seasoned seaweed")));
+        listModel.addElement(new Meal("Crispy Chicken Wings", "American", 26, "./data/chickenWings.png",
+                Arrays.asList("chicken wings", "baking powder", "salt", "paprika", "garlic powder,", "hot sauce",
+                        "brown sugar", "water")));
 
         masterList.setCellRenderer(mealDisplay);
 

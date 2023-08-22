@@ -18,6 +18,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
 
     private JLabel imageLabel;
     private Dimension imageDimension;
+//    private JButton viewIngredientsButton;
 
 
 
@@ -34,17 +35,26 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         imageLabel = new JLabel();
         imageDimension = new Dimension(100, 100);
 
+        createDetailsPanel();
 
+        panel.add(imageLabel, BorderLayout.WEST);
+        panel.add(detailsPanel, BorderLayout.CENTER);
+
+
+    }
+
+
+    private JPanel createDetailsPanel() {
+//        viewIngredientsButton =  new JButton("View Ingredients");
         detailsPanel = new JPanel(new GridLayout(0, 1));
         detailsPanel.add(name);
         detailsPanel.add(cuisine);
         detailsPanel.add(price);
+//        detailsPanel.add(viewIngredientsButton);
 
-        panel.add(imageLabel, BorderLayout.WEST);
-        panel.add(detailsPanel, BorderLayout.CENTER);  // change later with added image
-
-
+        return detailsPanel;
     }
+
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Meal> list,
@@ -55,11 +65,9 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         setUp();
 
         if (isSelected) {
-
             isSelected();
 
         } else {
-
             notSelected();
         }
 
@@ -85,9 +93,9 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         price.setOpaque(true);
         imageLabel.setOpaque(true);
 
-        imageLabel.setPreferredSize(imageDimension);
-        imageLabel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
 
+        imageLabel.setPreferredSize(imageDimension);
+        imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         try {
             Image img = value.getImage();
@@ -97,9 +105,9 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
+
+
 
     // MODIFIES: this
     // EFFECTS: sets background for a selected meal
@@ -108,6 +116,7 @@ public class MealListDisplay implements ListCellRenderer<Meal> {
         name.setBackground(list.getSelectionBackground());
         cuisine.setBackground(list.getSelectionBackground());
         imageLabel.setBackground(list.getSelectionBackground());
+
 
     }
 

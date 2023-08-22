@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 // This class represents a meal with a name, cuisine, price, and ingredients
@@ -20,14 +22,17 @@ public class Meal implements Writable {
     private int imageWidth = 100;
     private int imageHeight = 100;
 
+    private List<String> ingredients;
+
 
 
     // EFFECTS: creates a meal with name, cuisine, empty list of ingredients
-    public Meal(String name, String cuisine, int price, String imagePath) {
+    public Meal(String name, String cuisine, int price, String imagePath, List<String> ingredients) {
         this.name = name;
         this.cuisine = cuisine;
         this.price = price;
         this.imagePath = imagePath;
+        this.ingredients = ingredients;
 
     }
 
@@ -57,7 +62,12 @@ public class Meal implements Writable {
     public String mealToText() {
         return name + "/" + cuisine + "/" + "$" + price;
     }
-    
+
+    // EFFECTS: returns the list of ingredients
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
 
     @Override
     public JSONObject toJson() {
@@ -66,6 +76,7 @@ public class Meal implements Writable {
         json.put("cuisine", cuisine);
         json.put("price", price);
         json.put("image", imagePath);
+        json.put("ingredients", ingredients);
 
         return json;
     }

@@ -42,6 +42,17 @@ public class EventTest {
         assertEquals(date.toString() + "\n" + "Meal added", event.toString());
     }
 
+    @Test
+    public void testEquals() {
+        assertFalse(event.equals(null));
+        assertFalse(event.equals(new Object()));
+    }
+
+    @Test
+    public void testHashCode() {
+        assertEquals(new Event("Meal added").hashCode(),
+                new Event("Meal added").hashCode());
+    }
 
 }
 

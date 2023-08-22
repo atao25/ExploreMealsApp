@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 // This class references code from:
@@ -68,7 +70,13 @@ public class JsonReader {
         int price = jsonObject.getInt("price");
         String image = jsonObject.getString("image");
 
-        Meal meal = new Meal(name, cuisine, price, image);
+        JSONArray ingredientsArray = jsonObject.getJSONArray("ingredients");
+        List<String> ingredients = new ArrayList<>();
+        for (int i = 0; i < ingredientsArray.length(); i++) {
+            ingredients.add(ingredientsArray.getString(i));
+        }
+
+        Meal meal = new Meal(name, cuisine, price, image, ingredients);
         ml.add(meal);
 
     }
