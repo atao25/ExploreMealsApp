@@ -1,4 +1,4 @@
-# MyPersonalProject: ExploreMeals
+# My Personal Project: ExploreMeals
 
 ## About
 
