@@ -3,7 +3,7 @@
 ## About
 
 This application serves as a handy and efficient way to explore different cuisines and prepare meals. 
-Allowing people to view meals of different cuisines and their associated ingredients, they can select the meals they would like to make and add them to their personal wishlist. 
+Being able to view meals of different cuisines and their associated ingredients, people can select the meals they would like to make and add them to their personal wishlist. 
 Not only does this app help *save time and money*, it also allows people to be *hands-on* with their meal preparations. It is especially useful to individuals with busy schedules who wishes to make their own meals but do not have time to research recipes, ingredients, and browse grocery stores. 
 
 As a full-time student, I believe this application is a great opportunity to not only get rid of the bad habit of ordering out, but also develop my interest and skills in making my own meals under the busy schedule of school.
